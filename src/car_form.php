@@ -18,6 +18,10 @@ class Car{
           return $this->price <= $max_price;
     }
 
+    function isUnderMiles($max_miles){
+          return $this->miles <= $max_miles;
+    }
+
     function getModel(){
       return $this->make_model;
     }

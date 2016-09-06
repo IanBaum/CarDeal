@@ -19,6 +19,10 @@
                       <label for='price'>Maximum Price:</label>
                       <input id='price' name='price' class='form-control' type='number>'
                     </div>
+                    <div class='form-group'>
+                      <label for='miles'>Maximum Miles:</label>
+                      <input id='miles' name='miles' class='form-control' type='number>'
+                    </div>
                     <button type='submit class=btn-success'>Submit</button>
                   </form>
                 </div>
@@ -29,11 +33,13 @@
 // NOTE: this is similar to frontsies
     $app->get("/view_cars", function(){
       $maxPrice = $_GET['price'];
+      $maxMiles = $_GET['miles'];
       $float_price = (float) $maxPrice;
+      $float_miles = (float) $maxMiles;
       $cars = [];
-      $tesla = new Car("2016 Tesla",10000,1,"/img/tesla.jpeg");
-      $tonka = new Car("2016 Tonka",25000,1,"/img/tonka.jpg");
-      $bat = new Car("2016 Batmobile",50000,1,"/img/bat.jpg");
+      $tesla = new Car("2016 Tesla",10000,12000000000000,"/img/tesla.jpeg");
+      $tonka = new Car("2016 Tonka",25000,12324,"/img/tonka.jpg");
+      $bat = new Car("2016 Batmobile",50000,14111,"/img/bat.jpg");
       $boat = new Car("It's a boat",100000,2,"/img/boat.jpg");
       array_push($cars, $tesla);
       array_push($cars, $tonka);
@@ -43,11 +49,15 @@
 
         $cars_matching_search = [];
         foreach ($cars as $car) {
-            if ($car->isWorthBuying($float_price)) {
+            if ($car->isWorthBuying($float_price) && $car->isUnderMiles($float_miles)) {
                 array_push($cars_matching_search, $car);
             }
         }
 
+        if (empty($cars_matching_search)) {
+            return "<p>We have no cars meeting your stringent criteria.</p>
+            <a href='/../'>Go Back</a>";
+        }
       foreach ($cars_matching_search as $car) {
           $inventory .= "<li>" . $car->getModel() . "</li>";
           $inventory .= "<ul>";
