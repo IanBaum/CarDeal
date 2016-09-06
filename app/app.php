@@ -48,7 +48,7 @@
             }
         }
 
-      foreach ($cars as $car) {
+      foreach ($cars_matching_search as $car) {
           $inventory .= "<li>" . $car->getModel() . "</li>";
           $inventory .= "<ul>";
           $inventory .= "<li>$" . $car->getPrice() . "</li>";
