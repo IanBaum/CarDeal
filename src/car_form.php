@@ -5,11 +5,13 @@ class Car{
     private $make_model;
     private $price;
     private $miles;
+    private $picture;
 
-    function __construct($carModel,$carPrice,$carMiles){
+    function __construct($carModel,$carPrice,$carMiles,$carPicture){
       $this->make_model = $carModel;
       $this->price = $carPrice;
       $this->miles = $carMiles;
+      $this->picture = $carPicture;
     }
 
     function isWorthBuying($max_price){
@@ -26,5 +28,9 @@ class Car{
 
     function getMiles(){
       return $this->miles;
+    }
+
+    function getPicture(){
+      return $this->picture;
     }
 }
