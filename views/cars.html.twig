@@ -9,13 +9,37 @@
       <form action='/view_cars'>
         <div class='form-group'>
           <label for='price'>Maximum Price:</label>
-          <input id='price' name='price' class='form-control' type='number>'
+          <input id='price' name='price' class='form-control' type='number'>
         </div>
         <div class='form-group'>
           <label for='miles'>Maximum Miles:</label>
-          <input id='miles' name='miles' class='form-control' type='number>'
+          <input id='miles' name='miles' class='form-control' type='number'>
         </div>
-        <button type='submit class=btn-success'>Submit</button>
+        <button type='submit' class='btn btn-success'>Submit</button>
+      </form>
+      <hr>
+      <h1>Sell a car!</h1>
+      <form action='/sellcar' method='post'>
+        <div class='form-group'>
+          <label for='sellModel'>Car Model:</label>
+          <input id='sellModel' name='sellModel' class='form-control' type='text'>
+        </div>
+        <div class='form-group'>
+          <label for='sellMiles'>Mileage of Your Car:</label>
+          <input id='sellMiles' name='sellMiles' class='form-control' type='number'>
+        </div>
+        <div class='form-group'>
+          <label for='sellPrice'>Price Your Asking For:</label>
+          <input id='sellPrice' name='sellPrice' class='form-control' type='number'>
+        </div>
+        <div class='form-group'>
+          <label for='sellImage'>Enter Car Image URL:</label>
+          <input id='sellImage' name='sellImage' class='form-control' type='text'>
+        </div>
+        <button type='submit' class='btn btn-primary'>Sell My Car</button>
+      </form>
+      <form action='/deletecars' method='post'>
+        <button type="submit" class='btn btn-danger'>DELETE ALL CARS</button>
       </form>
     </div>
   </body>

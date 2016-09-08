@@ -35,7 +35,25 @@
                 array_push($cars_matching_search, $car);
             }
         }
+        foreach($_SESSION['list_of_cars'] as $car){
+          if ($car->isWorthBuying($float_price) && $car->isUnderMiles($float_miles)) {
+              array_push($cars_matching_search, $car);
+          }
+        }
       return $app['twig']->render('viewcars.html.twig', array('cars'=>$cars_matching_search));
+    });
+
+    $app->post("/sellcar", function() use($app){
+      $car = new Car($_POST['sellModel'], $_POST['sellPrice'], $_POST['sellMiles'], $_POST['sellImage']);
+      $car->save();
+      return $app['twig']->render('sellcar.html.twig', array('newcar'=>$car));
+    });
+
+    $app->post("/deletecars", function() use($app){
+
+      Car::deleteAll();
+
+      return $app['twig']->render('deletecars.html.twig');
     });
 
     return $app;
