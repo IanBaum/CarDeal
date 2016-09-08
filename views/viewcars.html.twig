@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>BUY OUR CARS!</title>
+  </head>
+  <body>
+    {% if cars is empty %}
+      <p>We have no cars meeting your stringent criteria.</p>
+      <a href='/'>Go Back</a>
+    {% endif %}
+    {% if cars is not empty %}
+    <h1>Matching cars:</h1>
+      {% for car in cars %}
+        <li>{{car.getModel}}</li>
+        <ul>
+          <li>${{car.getPrice}}</li>
+          <li>Miles: {{car.getMiles}}</li>
+          <li><img src= {{car.getPicture}}></li>
+        </ul>
+      {% endfor %}
+    {% endif %}
+
+  </body>
+</html>
